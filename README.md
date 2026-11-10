@@ -4,7 +4,7 @@ Gentoo overlay to provide latest Kubernetes releases
 
 ## How to use
 
-- Create `kube-overlay.conf` into `/etc/portage/repos.conf/`:
+- Create `kube-overlay.conf`:
 
 `/etc/portage/repos.conf/kube-overlay.conf`
 
@@ -23,7 +23,13 @@ sync-uri = https://codeberg.org/goyadevs/kube-overlay.git
 
 Or sync only the repo with: `emaint sync -r kube-overlay`
 
-- Upgrade with `emerge`:
+- Install `kubeadm` `kubelet` `kubectl`:
+
+```console
+# emerge --ask --verbose sys-cluster/kubeadm sys-cluster/kubelet sys-cluster/kubectl
+```
+
+- Or upgrade your existing cluster with `emerge`:
 
 ```console
 # emerge --ask --verbose --update --deep --newuse @world
